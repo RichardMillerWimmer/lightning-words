@@ -1,2 +1,9 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+
+	import { generateWordTable } from "$lib/generateWordTable";
+
+</script>
+<h1>Lightning Words</h1>
+<span>
+    {generateWordTable(1)}
+</span>
