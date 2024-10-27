@@ -14,7 +14,16 @@
         i = i + 1;
     }
 
+    const handleWordAdvanceOnSpace = (/** @type {{ key: string; code: string; keyCode: number; }} */ e) => {
+        if (e.key == " " ||
+            e.code == "Space" ||      
+            e.keyCode == 32      
+            ) {
+                handleWordAdvance()
+        }
+    }
 </script>
+
 <h1>Lightning Words</h1>
 <Select />
 <div>
@@ -23,3 +32,7 @@
     </span>
 </div>
 <button on:click={handleWordAdvance}>Next</button>
+
+<svelte:window
+    on:keydown={handleWordAdvanceOnSpace}
+/>
