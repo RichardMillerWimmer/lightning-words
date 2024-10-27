@@ -8,9 +8,18 @@
         console.log(value);
     });
 
+    const wordTable = generateWordTable(1)
+    let i = 0;
+    const handleWordAdvance = () => {
+        i = i + 1;
+    }
+
 </script>
 <h1>Lightning Words</h1>
 <Select />
-<span>
-    {generateWordTable(1)}
-</span>
+<div>
+    <span>
+        {wordTable[i]}
+    </span>
+</div>
+<button on:click={handleWordAdvance}>Next</button>
