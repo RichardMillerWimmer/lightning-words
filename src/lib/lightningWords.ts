@@ -3,7 +3,7 @@ type LightningWordsType = {
 };
 
 export const lightningWords: LightningWordsType = {
-    1: ['the', 'will', 'and', 'is', 'in', 'it', ],
+    1: ['the', 'will', 'and', 'is', 'in', 'it'],
     2: [],
     3: [],
     4: [],
@@ -13,4 +13,6 @@ export const lightningWords: LightningWordsType = {
     8: [],
     9: [],
     10: [],
+    11: [],
+    12: ['one', 'two', 'three', 'do', 'you', 'they', 'are'],
 }

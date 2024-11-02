@@ -11,7 +11,9 @@
     const wordTable = generateWordTable(1)
     let i = 0;
     const handleWordAdvance = () => {
-        i = i + 1;
+        if(i < 39) {
+            i = i + 1
+        }
     }
 
     const handleWordAdvanceOnSpace = (/** @type {{ key: string; code: string; keyCode: number; }} */ e) => {
