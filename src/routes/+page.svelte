@@ -4,21 +4,26 @@
     import { weekState } from "$lib/createWeek";
     import Select from "$lib/components/Select/Select.svelte";
 
+    weekState.subscribe((/** @type {number} */ value) => {
+        console.log(value);
+    });
+
     let isPlaying = false;
 
     const handleStart = () => {
         isPlaying = true;
     }
 
-    weekState.subscribe((/** @type {number} */ value) => {
-        console.log(value);
-    });
-
     const wordTable = generateWordTable(1)
+    
     let i = 0;
+
     const handleWordAdvance = () => {
         if(i < 39) {
             i = i + 1
+        }
+        if(i === 39) {
+            isPlaying = false;
         }
     }
 
