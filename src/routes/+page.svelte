@@ -4,14 +4,40 @@
     import { weekState } from "$lib/createWeek";
     import Select from "$lib/components/Select/Select.svelte";
 
-    // weekState.subscribe((/** @type {number} */ value) => {
-    //     console.log(value);
-    // });
+
+    enum STATE {
+        RUNNING,
+        STOPPED,
+    };
+
+    let startTime: number = 0;
+    let elapsedTime: number = 0;
+    let interval: number;
+    let state: STATE = STATE.STOPPED;
+
+    const startTimer = () => {
+        elapsedTime = 0;
+        startTime = Date.now();
+        state = STATE.RUNNING;
+        interval = setInterval(() => {
+        if (state === STATE.RUNNING) {
+            const endTime = Date.now();
+            elapsedTime = endTime - startTime;
+        }
+        });
+    };
+
+    const endResetTimer = () => {
+        console.log(elapsedTime);
+        state = STATE.STOPPED;
+        clearInterval(interval);
+    };                   
 
     let isPlaying = false;
 
     const handleStart = () => {
         isPlaying = true;
+        startTimer();
     }
 
     let week = 0;
@@ -31,6 +57,7 @@
         if(i === 39) {
             isPlaying = false;
             i = 0;
+            endResetTimer();
         }
     }
 
@@ -58,6 +85,11 @@
             {wordTable[i]}
         </div>
         <button on:click={handleWordAdvance}>Next</button>
+    {/if}
+    {#if elapsedTime > 0 && state === STATE.STOPPED} 
+        <div>
+            <p>Your Time: {elapsedTime}</p>
+        </div>
     {/if}
 </div>
 
