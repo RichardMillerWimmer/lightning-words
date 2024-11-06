@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 
 	import { generateWordTable } from "$lib/generateWordTable";
     import { weekState } from "$lib/createWeek";
@@ -15,10 +15,7 @@
     }
 
     let week = 0;
-    /**
-	 * @type {string[]}
-	 */
-    let wordTable = []
+    let wordTable: string[] = []
     weekState.subscribe(value => {
         isPlaying = false;
         week = value;
