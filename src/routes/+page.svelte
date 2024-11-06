@@ -34,7 +34,7 @@
         }
     }
 
-    const handleWordAdvanceOnSpace = (/** @type {{ key: string; code: string; keyCode: number; }} */ e) => {
+    const handleWordAdvanceOnSpace = (e: KeyboardEvent) => {
         if (e.key == " " ||
             e.code == "Space" ||      
             e.keyCode == 32      
