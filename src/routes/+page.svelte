@@ -20,7 +20,7 @@
 	 */
     let wordTable = []
     weekState.subscribe(value => {
-        console.log(value);
+        isPlaying = false;
         week = value;
         wordTable = generateWordTable(value);
     });
@@ -33,6 +33,7 @@
         }
         if(i === 39) {
             isPlaying = false;
+            i = 0;
         }
     }
 
