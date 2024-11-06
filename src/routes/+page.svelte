@@ -52,7 +52,7 @@
 <div>
     {#if !isPlaying}
     <div>
-        <button on:click={handleStart}>Start</button>
+        <button disabled='{!Boolean(week)}' on:click={handleStart}>Start</button>
     </div>
     {/if}
     {#if isPlaying && wordTable.length}
