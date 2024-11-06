@@ -4,9 +4,9 @@
     import { weekState } from "$lib/createWeek";
     import Select from "$lib/components/Select/Select.svelte";
 
-    weekState.subscribe((/** @type {number} */ value) => {
-        console.log(value);
-    });
+    // weekState.subscribe((/** @type {number} */ value) => {
+    //     console.log(value);
+    // });
 
     let isPlaying = false;
 
@@ -14,7 +14,16 @@
         isPlaying = true;
     }
 
-    const wordTable = generateWordTable(1)
+    let week = 0;
+    /**
+	 * @type {string[]}
+	 */
+    let wordTable = []
+    weekState.subscribe(value => {
+        console.log(value);
+        week = value;
+        wordTable = generateWordTable(value);
+    });
     
     let i = 0;
 
@@ -39,15 +48,16 @@
 
 <h1>Lightning Words</h1>
 <Select />
+<h2>{#if week}Week {week}{:else}Select A Week{/if}</h2>
 <div>
     {#if !isPlaying}
     <div>
         <button on:click={handleStart}>Start</button>
     </div>
     {/if}
-    {#if isPlaying}
+    {#if isPlaying && wordTable.length}
         <div>
-                {wordTable[i]}
+            {wordTable[i]}
         </div>
         <button on:click={handleWordAdvance}>Next</button>
     {/if}
