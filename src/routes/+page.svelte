@@ -88,7 +88,7 @@
     {/if}
     {#if elapsedTime > 0 && state === STATE.STOPPED} 
         <div>
-            <p>Your Time: {elapsedTime}</p>
+            <p>Your Time: {Math.floor(elapsedTime/1000)} seconds</p>
         </div>
     {/if}
 </div>
