@@ -15,5 +15,6 @@ export const lightningWords: LightningWordsType = {
     9: [],
     10: [],
     11: ['one', 'two', 'three', 'do', 'you', 'they', 'are'],
-    12: ['one', 'two', 'three', 'four', 'five', 'here']
+    12: ['one', 'two', 'three', 'four', 'five', 'here'],
+    13: ['go', 'green', 'blue', 'yellow', 'what', 'from']
 }
