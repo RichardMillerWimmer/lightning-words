@@ -71,27 +71,65 @@
     }
 </script>
 
-<h1>Lightning Words</h1>
-<Select />
-<h2>{#if week}Week {week}{:else}Select A Week{/if}</h2>
-<div>
-    {#if !isPlaying}
+<style>
+    .LightningWord-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        margin-top: 1rem;
+        padding: 0.5rem;
+        font-size: 1rem;
+        width: 100px;
+        border-radius: 2rem;
+        background-color: rgb(36, 105, 255);
+        color: white;
+        border: none;
+    }
+    
+    .LightningWord-word {
+        font-size: 5rem;
+        margin-top: 1rem;
+        text-align: center;
+    }
+</style>
+
+<main class="LightningWord-main">
+    <h1>Lightning Words</h1>
+    <Select />
+    <h2>{#if week}Week {week}{:else}Select A Week{/if}</h2>
     <div>
-        <button disabled='{!Boolean(week)}' on:click={handleStart}>Start</button>
+        {#if !isPlaying}
+        <div>
+            <button disabled='{!Boolean(week)}' on:click={handleStart}>Start</button>
+        </div>
+        {/if}
+        {#if isPlaying && wordTable.length}
+            <button on:click={handleWordAdvance}>Next</button>
+            <div class="LightningWord-word">
+                {wordTable[i]}
+            </div>
+        {/if}
+        {#if elapsedTime > 0 && state === STATE.STOPPED} 
+            <div>
+                <p>Your Time: {Math.floor(elapsedTime/1000)} seconds</p>
+            </div>
+        {/if}
     </div>
-    {/if}
-    {#if isPlaying && wordTable.length}
-        <div>
-            {wordTable[i]}
-        </div>
-        <button on:click={handleWordAdvance}>Next</button>
-    {/if}
-    {#if elapsedTime > 0 && state === STATE.STOPPED} 
-        <div>
-            <p>Your Time: {Math.floor(elapsedTime/1000)} seconds</p>
-        </div>
-    {/if}
-</div>
+</main>
+
 
 <svelte:window
     on:keydown={handleWordAdvanceOnSpace}
